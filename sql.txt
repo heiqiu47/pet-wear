@@ -1,0 +1,19 @@
+CREATE DATABASE PET_WEAR;
+
+create table pet_wear.users
+(
+    user_id       int(20) auto_increment,
+    user_name     varchar(20)  not null,
+    user_phone    int(20)      not null,
+    user_password varchar(20)  not null,
+    user_sex      int(20)      not null,
+    user_avatar   varchar(255) not null,
+    constraint users_user_id_uindex
+        unique (user_id),
+    constraint users_user_phone_uindex
+        unique (user_phone)
+);
+
+alter table pet_wear.users
+    add primary key (user_id);
+

@@ -1,7 +1,6 @@
 package com.example.petwear.controller;
 
 import com.example.petwear.mapper.UserMapper;
-import com.example.petwear.pojo.dto.UserInfoDto;
 import com.example.petwear.pojo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,4 @@ public class UserController {
         List<User> users = userMapper.queryUserList();
         return users;
     }
-
-
-
 }
