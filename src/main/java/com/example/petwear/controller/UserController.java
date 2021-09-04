@@ -4,19 +4,36 @@ import com.example.petwear.mapper.UserMapper;
 import com.example.petwear.pojo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * @author qiu
+ */
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
-    @GetMapping("/test")
+    public UserController(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+
+    @GetMapping("/all")
     public List<User> queryUserList() {
-        List<User> users = userMapper.queryUserList();
-        return users;
+        return userMapper.queryUserList();
+    }
+
+    @PostMapping("/login")
+    public String login(int phone, String password) {
+        String s = userMapper.loginByPhone(phone, password);
+        if (s == null) {
+            s = "登录失败";
+        }
+        return s;
     }
 }
