@@ -1,5 +1,6 @@
 package com.example.petwear.pojo.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,6 @@ public class User {
     String userName;
     int userPhone;
     String userPassword;
-    int userSex;
+    String userSex;
     String userAvatar;
 }
