@@ -1,0 +1,49 @@
+package com.example.petwear.controller;
+
+import com.example.petwear.pojo.model.Pet;
+import com.example.petwear.service.Impl.PetServiceImpl;
+import com.example.petwear.utils.Result;
+import com.example.petwear.utils.ResultGenerator;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * @author qiu
+ */
+@RestController
+@RequestMapping
+public class PetController {
+
+    private final PetServiceImpl petService;
+
+    public PetController(PetServiceImpl petService) {
+        this.petService = petService;
+    }
+
+    @GetMapping("{userId}/pet")
+    public Result<Object> selPetList(@PathVariable int userId, @RequestHeader String token) {
+        Result<Object> result;
+        List<Pet> pets = petService.selPetList(userId, token);
+        if (pets != null) {
+            result = ResultGenerator.genSuccessResult("查询成功", pets);
+        } else {
+            result = ResultGenerator.genErrorResult("查询失败");
+        }
+        return result;
+    }
+    @GetMapping("{userId}/pet/{petId}")
+    public Result<Object> selPetInfo(@PathVariable int userId, @PathVariable int petId, @RequestHeader String token) {
+        Result<Object> result;
+        Pet pet = petService.selPetInfo(userId, petId, token);
+        if (pet != null) {
+            result = ResultGenerator.genSuccessResult("查询成功", pet);
+        } else {
+            result = ResultGenerator.genErrorResult("查询失败");
+        }
+        return result;
+    }
+
+
+
+}

@@ -35,6 +35,13 @@ public class ResultGenerator {
         return result;
     }
 
+    public static Result<Object> genErrorResult() {
+        Result<Object> result = new Result<>();
+        result.setCode(RESULT_CODE_SERVER_ERROR);
+        result.setMsg(DEFAULT_FAIL_MESSAGE);
+        return result;
+    }
+
     public static Result<Object> genErrorResult(String message) {
         Result<Object> result = new Result<>();
         result.setCode(RESULT_CODE_SERVER_ERROR);

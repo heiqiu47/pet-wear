@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.petwear.mapper.PetMapper">
+
+    <select id="selPetList" resultType="Pet">
+        select * from pet_wear.pets where master_id = #{masterId};
+    </select>
+    <select id="selPetInfo" resultType="Pet">
+        select * from pet_wear.pets where pet_id = #{petId} and master_id = #{masterId};
+    </select>
+
+
+</mapper>

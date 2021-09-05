@@ -5,6 +5,9 @@ import com.example.petwear.pojo.model.User;
 
 import java.util.List;
 
+/**
+ * @author qiu
+ */
 public interface UserService {
 
     List<User> selUserList();

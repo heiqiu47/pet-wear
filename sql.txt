@@ -17,3 +17,25 @@ create table pet_wear.users
 alter table pet_wear.users
     add primary key (user_id);
 
+create table pets
+(
+	pet_id int(20),
+	pet_name varchar(20) not null,
+	master_id int(20) not null,
+	pet_type varchar(10) not null,
+	pet_hr int(20) null,
+	pet_spo2 int(20) null,
+	pet_temp int(20) null,
+	pet_ecg int(20) null,
+	pet_weight int(20) null
+)charset = utf8;
+
+create unique index pets_pet_id_uindex
+	on pets (pet_id);
+
+alter table pets
+	add constraint pets_pk
+		primary key (pet_id);
+
+alter table pets modify pet_id int(20) auto_increment;
+

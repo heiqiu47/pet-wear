@@ -13,7 +13,7 @@ import java.util.List;
  * @author qiu
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping
 public class UserController {
 
     private final UserServiceImpl userService;
@@ -56,7 +56,7 @@ public class UserController {
         Result<Object> result;
         User user = userService.selUserInfo(userId, token);
         if (user != null) {
-            result = ResultGenerator.genSuccessResult(user);
+            result = ResultGenerator.genSuccessResult("查询成功", user);
         } else {
             result = ResultGenerator.genErrorResult("查询失败");
         }
