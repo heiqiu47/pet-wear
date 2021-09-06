@@ -42,4 +42,13 @@ public class PetServiceImpl implements PetService {
         return pet;
     }
 
+    @Override
+    public int updatePet(Pet pet, String token) {
+        var i = 0;
+        Object tokenId = StpUtil.getLoginIdByToken(token);
+        if (tokenId != null && tokenId.equals(String.valueOf(pet.getMasterId()))) {
+            i = petMapper.updatePet(pet);
+        }
+        return i;
+    }
 }

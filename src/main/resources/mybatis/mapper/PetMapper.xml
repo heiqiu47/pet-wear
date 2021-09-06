@@ -5,11 +5,44 @@
 <mapper namespace="com.example.petwear.mapper.PetMapper">
 
     <select id="selPetList" resultType="Pet">
-        select * from pet_wear.pets where master_id = #{masterId};
-    </select>
-    <select id="selPetInfo" resultType="Pet">
-        select * from pet_wear.pets where pet_id = #{petId} and master_id = #{masterId};
+        select *
+        from pet_wear.pets
+        where master_id = #{masterId};
     </select>
 
+    <select id="selPetInfo" resultType="Pet">
+        select *
+        from pet_wear.pets
+        where pet_id = #{petId}
+          and master_id = #{masterId};
+    </select>
+
+    <update id="updatePet" parameterType="Pet">
+        update pet_wear.pets
+        <set>
+            <if test="petName != null">
+                pet_name = #{petName},
+            </if>
+            <if test="petType != null">
+                pet_type = #{petType},
+            </if>
+            <if test="petHr != 0">
+                pet_hr = #{petHr},
+            </if>
+            <if test="petSpo2 != 0">
+                pet_spo2 = #{petSpo2},
+            </if>
+            <if test="petTemp != 0">
+                pet_temp = #{petTemp},
+            </if>
+            <if test="petEcg != 0">
+                pet_ecg = #{petEcg},
+            </if>
+            <if test="petWeight != 0">
+                pet_weight = #{petWeight}
+            </if>
+        </set>
+        where pet_id = #{petId} and master_id = #{masterId};
+    </update>
 
 </mapper>

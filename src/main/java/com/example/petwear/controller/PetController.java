@@ -32,6 +32,7 @@ public class PetController {
         }
         return result;
     }
+
     @GetMapping("{userId}/pet/{petId}")
     public Result<Object> selPetInfo(@PathVariable int userId, @PathVariable int petId, @RequestHeader String token) {
         Result<Object> result;
@@ -44,6 +45,18 @@ public class PetController {
         return result;
     }
 
-
+    @PatchMapping("{userId}/pet/{petId}")
+    public Result<Object> updatePet(@PathVariable int userId, @PathVariable int petId,Pet pet, @RequestHeader String token) {
+        Result<Object> result;
+        pet.setPetId(petId);
+        pet.setMasterId(userId);
+        int i = petService.updatePet(pet, token);
+        if (i != 0) {
+            result = ResultGenerator.genSuccessResult("更新成功");
+        } else {
+            result = ResultGenerator.genErrorResult("更新失败");
+        }
+        return result;
+    }
 
 }

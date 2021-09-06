@@ -39,6 +39,7 @@ public class UserController {
         }
         return result;
     }
+
     @PostMapping("register")
     public Result<Object> userRegister(User user) {
         Result<Object> result;
@@ -67,7 +68,7 @@ public class UserController {
     public Result<Object> updateUser(User user, @PathVariable int userId, @RequestHeader String token) {
         Result<Object> result;
         user.setUserId(userId);
-        int i = userService.updateUser(user,token);
+        int i = userService.updateUser(user, token);
         if (i != 0) {
             result = ResultGenerator.genSuccessResult("更新成功");
         } else {

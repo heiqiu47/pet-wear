@@ -17,7 +17,7 @@ public class Pet {
     private String petType;
     private int petHr;
     private int petSpo2;
-    private int petTamp;
+    private int petTemp;
     private int petEcg;
     private int petWeight;
 }
