@@ -1,7 +1,6 @@
 package com.example.petwear.mapper;
 
 import com.example.petwear.pojo.model.Pet;
-import com.example.petwear.pojo.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -33,5 +32,7 @@ public interface PetMapper {
 
 
     int updatePet(Pet pet);
+
+    int addPet(Pet pet);
 
 }

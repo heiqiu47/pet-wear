@@ -46,7 +46,7 @@ public class PetController {
     }
 
     @PatchMapping("{userId}/pet/{petId}")
-    public Result<Object> updatePet(@PathVariable int userId, @PathVariable int petId,Pet pet, @RequestHeader String token) {
+    public Result<Object> updatePet(@PathVariable int userId, @PathVariable int petId, Pet pet, @RequestHeader String token) {
         Result<Object> result;
         pet.setPetId(petId);
         pet.setMasterId(userId);
@@ -55,6 +55,19 @@ public class PetController {
             result = ResultGenerator.genSuccessResult("更新成功");
         } else {
             result = ResultGenerator.genErrorResult("更新失败");
+        }
+        return result;
+    }
+
+    @PostMapping("{userId}/pet/add")
+    public Result<Object> addPet(@PathVariable int userId,Pet pet, @RequestHeader String token) {
+        Result<Object> result;
+        pet.setMasterId(userId);
+        int i = petService.addPet(pet, token);
+        if (i != 0) {
+            result = ResultGenerator.genSuccessResult("创建成功");
+        } else {
+            result = ResultGenerator.genErrorResult("创建失败");
         }
         return result;
     }

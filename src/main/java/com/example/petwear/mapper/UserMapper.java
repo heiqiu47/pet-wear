@@ -1,6 +1,7 @@
 package com.example.petwear.mapper;
 
 import com.example.petwear.pojo.dto.UserLoginDto;
+import com.example.petwear.pojo.model.Pet;
 import com.example.petwear.pojo.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -37,6 +38,7 @@ public interface UserMapper {
     User selUserInfo(int userId);
 
     int updateUser(User user);
+
 
 
 //

@@ -16,4 +16,6 @@ public interface PetService {
 
     int updatePet(Pet pet, String token);
 
+    int addPet(Pet pet, String token);
+
 }

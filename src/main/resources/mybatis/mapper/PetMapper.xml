@@ -45,4 +45,9 @@
         where pet_id = #{petId} and master_id = #{masterId};
     </update>
 
+    <insert id="addPet" parameterType="Pet">
+        insert into pet_wear.pets(pet_name, master_id, pet_type)
+        values (#{petName}, #{masterId}, #{petType});
+    </insert>
+
 </mapper>
